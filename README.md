@@ -159,15 +159,13 @@ The portfolio is fully responsive and optimized for:
 4. Push to the branch: `git push origin feature-name`
 5. Submit a pull request
 
-## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## 📞 Contact
 
-- **Email**: [your.email@example.com](mailto:your.email@example.com)
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
-- **GitHub**: [Your GitHub Profile](https://github.com/yourusername)
+- **Email**: [prathap0955@gail.com](mailto:your.email@example.com)
+- **LinkedIn**: [www.linkedin.com/in/prathap-p0955](https://linkedin.com/in/yourprofile)
+- **GitHub**: [https://github.com/Prathap0955](https://github.com/yourusername)
 
 ---
 
