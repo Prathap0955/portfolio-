@@ -1,5 +1,3 @@
-import React from 'react';
-import { motion } from 'framer-motion';
 import {
   Typography,
   Box,
@@ -8,12 +6,10 @@ import {
   Grid,
   Container,
   Chip,
-  Divider,
   List,
   ListItem,
   ListItemIcon,
   ListItemText,
-  Avatar,
   Paper
 } from '@mui/material';
 import {

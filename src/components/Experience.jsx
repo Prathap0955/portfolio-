@@ -61,7 +61,7 @@ const Experience = () => {
       type: 'work',
       title: 'Junior Developer',
       company: 'Yalabs Pvt',
-      period: '2024 - now',
+      period: '2024',
       location: 'Chennai, India',
       description: 'Started career as a junior developer, learning full-stack development with React and Node.js. Contributed to various projects and gained hands-on experience.',
       achievements: [

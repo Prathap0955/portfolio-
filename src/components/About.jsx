@@ -1,19 +1,14 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Typography,
   Button,
   Box,
-  Card,
-  CardContent,
-  Grid,
   Container,
   Avatar
 } from '@mui/material';
 import {
   Download as DownloadIcon,
   Work as WorkIcon,
-  School as SchoolIcon,
   Star as StarIcon
 } from '@mui/icons-material';
 
@@ -26,12 +21,12 @@ const About = () => {
     link.click();
   };
 
-  const stats = [
-    { icon: <WorkIcon />, value: '5+', label: 'Years Experience' },
-    { icon: <StarIcon />, value: '50+', label: 'Projects Completed' },
-    { icon: <WorkIcon />, value: '20+', label: 'Happy Clients' },
-    { icon: <StarIcon />, value: '100%', label: 'Client Satisfaction' }
-  ];
+  // const stats = [
+  //   { icon: <WorkIcon />, value: '5+', label: 'Years Experience' },
+  //   { icon: <StarIcon />, value: '50+', label: 'Projects Completed' },
+  //   { icon: <WorkIcon />, value: '20+', label: 'Happy Clients' },
+  //   { icon: <StarIcon />, value: '100%', label: 'Client Satisfaction' }
+  // ];
 
   return (
     <Box

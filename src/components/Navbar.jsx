@@ -50,7 +50,7 @@ const Navbar = () => {
     { id: 'projects', label: 'Projects' },
     { id: 'experience', label: 'Experience' },
     { id: 'contact', label: 'Contact' },
-    { id: 'resume', label: 'Resume' }
+    // { id: 'resume', label: 'Resume' }
   ];
 
   const drawer = (

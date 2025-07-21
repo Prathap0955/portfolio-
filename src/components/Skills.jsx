@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Typography,
@@ -16,10 +15,8 @@ import {
 import {
   Code as CodeIcon,
   Storage as StorageIcon,
-  Cloud as CloudIcon,
   Build as BuildIcon,
   Web as WebIcon,
-  PhoneAndroid as MobileIcon
 } from '@mui/icons-material';
 
 const Skills = () => {

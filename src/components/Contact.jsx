@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import {
   Typography,
@@ -9,13 +9,11 @@ import {
   Container,
   TextField,
   Button,
-  Alert,
   List,
   ListItem,
   ListItemText,
   IconButton,
   Avatar,
-  Tooltip
 } from '@mui/material';
 import {
   Email as EmailIcon,

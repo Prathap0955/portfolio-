@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import {
   Box,
@@ -16,7 +15,6 @@ import {
 } from '@mui/icons-material';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
 
   const socialLinks = [
     {
