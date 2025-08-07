@@ -1,18 +1,19 @@
-import { motion } from 'framer-motion';
-import {
-  Typography,
-  Button,
-  Box,
-  Container,
-  Avatar
-} from '@mui/material';
-import {
-  Download as DownloadIcon,
-  Work as WorkIcon,
-  Star as StarIcon
-} from '@mui/icons-material';
+import React, { useState, useEffect } from 'react';
 
 const About = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentSkill, setCurrentSkill] = useState(0);
+
+  const skills = ['React.js', 'Node.js', 'MongoDB', 'Express.js', 'JavaScript', 'HTML/CSS'];
+  
+  useEffect(() => {
+    setIsVisible(true);
+    const interval = setInterval(() => {
+      setCurrentSkill((prev) => (prev + 1) % skills.length);
+    }, 2000);
+    return () => clearInterval(interval);
+  }, []);
+
   const downloadResume = () => {
     // In a real app, this would download an actual resume file
     const link = document.createElement('a');
@@ -21,163 +22,156 @@ const About = () => {
     link.click();
   };
 
-  // const stats = [
-  //   { icon: <WorkIcon />, value: '5+', label: 'Years Experience' },
-  //   { icon: <StarIcon />, value: '50+', label: 'Projects Completed' },
-  //   { icon: <WorkIcon />, value: '20+', label: 'Happy Clients' },
-  //   { icon: <StarIcon />, value: '100%', label: 'Client Satisfaction' }
-  // ];
+  const stats = [
+    { value: '1+', label: 'Year Experience', delay: 0 },
+    { value: '15+', label: 'Projects Built', delay: 0.2 },
+    { value: '100%', label: 'Passion Level', delay: 0.4 },
+    { value: '24/7', label: 'Learning Mode', delay: 0.6 }
+  ];
 
   return (
-    <Box
+    <div 
       id="about"
-      sx={{
-        py: 8,
-        backgroundColor: 'background.paper',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center'
-      }}
+      className="min-h-screen bg-gradient-to-br from-gray-900 via-slate-900 to-black py-16 px-4 flex items-center relative overflow-hidden"
     >
-      <Container maxWidth="lg">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-        >
-          <Typography
-            variant="h2"
-            align="center"
-            sx={{
-              mb: 6,
-              position: 'relative',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                bottom: -16,
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: 100,
-                height: 4,
-                background: 'linear-gradient(45deg, #00d4ff, #0099cc)',
-                borderRadius: 2,
-              }
-            }}
-          >
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-4 -left-4 w-72 h-72 bg-blue-600/20 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-blob"></div>
+        <div className="absolute -top-4 -right-4 w-72 h-72 bg-cyan-600/20 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-20 w-72 h-72 bg-indigo-600/20 rounded-full mix-blend-screen filter blur-xl opacity-40 animate-blob animation-delay-4000"></div>
+      </div>
+
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Title Section */}
+        <div className={`text-center mb-16 transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+          <h2 className="text-5xl font-bold text-white mb-4 relative inline-block">
             About Me
-          </Typography>
-        </motion.div>
-        
-        <Box sx={{ display: 'flex', alignItems: 'center', gap: 4, flexDirection: { xs: 'column', md: 'row' } }}>
-          <Box sx={{ flex: 1 }}>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Typography variant="h3" color="primary" sx={{ mb: 3 }}>
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full animate-pulse"></div>
+          </h2>
+        </div>
+
+        {/* Main Content */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
+          {/* Text Content */}
+          <div className={`space-y-6 transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}`}>
+            <div className="space-y-2">
+              <h3 className="text-4xl font-bold text-white mb-4">
                 Passionate Full Stack Developer
-              </Typography>
+              </h3>
+              <div className="text-xl text-cyan-400 font-medium flex items-center gap-2">
+                Specializing in{' '}
+                <span className="inline-block min-w-[120px] text-left">
+                  <span key={currentSkill} className="animate-fadeIn font-bold text-blue-400">
+                    {skills[currentSkill]}
+                  </span>
+                </span>
+              </div>
+            </div>
+            
+            <div className="space-y-4 text-gray-300 leading-relaxed">
+              <p className="transform transition-all duration-700 delay-500 hover:text-white">
+                I'm an aspiring full-stack developer with <strong className="text-cyan-400">1 year of hands-on experience</strong> building 
+                web applications using the MERN stack (MongoDB, Express.js, React.js, and Node.js). 
+                I'm continuously learning and improving my skills by working on real-world projects, 
+                building my portfolio, and exploring best practices in clean, maintainable code.
+              </p>
               
-              <Typography variant="body1" sx={{ mb: 3, color: 'text.secondary', lineHeight: 1.8 }}>
-              I'm an aspiring full-stack developer with over 1 year of hands-on experience building web applications using the MERN stack (MongoDB, Express.js, React.js, and Node.js). I’m continuously learning and improving my skills by working on real-world projects, building my portfolio, and exploring best practices in clean, maintainable code.
-              </Typography>
+              <p className="transform transition-all duration-700 delay-700 hover:text-white">
+                I enjoy solving problems through code and take pride in creating user-friendly, 
+                responsive, and scalable web applications. I'm always open to learning new technologies 
+                and growing as a developer.
+              </p>
               
-              <Typography variant="body1" sx={{ mb: 3, color: 'text.secondary', lineHeight: 1.8 }}>
-                I enjoy solving problems through code and take pride in creating user-friendly, responsive, and scalable web applications. I'm always open to learning new technologies and growing as a developer.
-              </Typography>
-              
-              <Typography variant="body1" sx={{ mb: 4, color: 'text.secondary', lineHeight: 1.8 }}>
-                Outside of coding, I like exploring new tools, studying software engineering concepts, and engaging with the developer community to grow and share knowledge.
-              </Typography>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button
-                  variant="contained"
-                  size="large"
-                  startIcon={<DownloadIcon />}
-                  onClick={downloadResume}
-                >
-                  Download Resume
-                </Button>
-              </motion.div>
-            </motion.div>
-          </Box>
-          
-          <Box sx={{ display: 'flex', justifyContent: 'center', flexShrink: 0 }}>
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <Avatar
-                sx={{
-                  width: 300,
-                  height: 300,
-                  background: 'linear-gradient(45deg, #00d4ff, #0099cc)',
-                  fontSize: '4rem',
-                  fontWeight: 700,
-                  border: '4px solid',
-                  borderColor: 'primary.main',
-                }}
+              <p className="transform transition-all duration-700 delay-900 hover:text-white">
+                Outside of coding, I like exploring new tools, studying software engineering concepts, 
+                and engaging with the developer community to grow and share knowledge.
+              </p>
+            </div>
+            
+            <div className={`pt-4 transform transition-all duration-700 delay-1100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
+              <button
+                onClick={downloadResume}
+                className="group bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-cyan-500/25 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 border border-cyan-500/20"
               >
-                PP
-              </Avatar>
-            </motion.div>
-          </Box>
-        </Box>
+                <svg className="w-6 h-6 group-hover:animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Download Resume
+              </button>
+            </div>
+          </div>
+          
+          {/* Profile Image */}
+          <div className="flex justify-center">
+            <div className={`relative transform transition-all duration-1000 delay-500 ${isVisible ? 'translate-x-0 opacity-100 scale-100' : 'translate-x-10 opacity-0 scale-90'}`}>
+              <div className="w-80 h-80 rounded-full bg-gradient-to-br from-blue-600 to-cyan-600 flex items-center justify-center text-white text-6xl font-bold shadow-2xl shadow-blue-900/50 relative overflow-hidden group border-4 border-cyan-400/30">
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-full animate-pulse opacity-75"></div>
+                <span className="relative z-10 group-hover:scale-110 transition-transform duration-300">PP</span>
+                
+                {/* Floating elements around avatar */}
+                <div className="absolute -top-2 -left-2 w-6 h-6 bg-yellow-400 rounded-full animate-ping"></div>
+                <div className="absolute -bottom-2 -right-2 w-4 h-4 bg-green-400 rounded-full animate-bounce"></div>
+                <div className="absolute top-1/4 -right-4 w-3 h-3 bg-purple-400 rounded-full animate-pulse"></div>
+                <div className="absolute bottom-1/4 -left-4 w-5 h-5 bg-pink-400 rounded-full animate-bounce animation-delay-1000"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Stats Section */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
+            <div
+              key={index}
+              className={`text-center p-6 bg-gray-800/50 backdrop-blur-sm rounded-2xl shadow-lg hover:shadow-xl hover:shadow-blue-900/20 transform transition-all duration-700 hover:scale-105 border border-gray-700/50 hover:border-cyan-500/50 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}
+              style={{ transitionDelay: `${1300 + stat.delay * 1000}ms` }}
+            >
+              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2 animate-countUp">
+                {stat.value}
+              </div>
+              <div className="text-gray-300 font-medium">
+                {stat.label}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <style jsx>{`
+        @keyframes blob {
+          0% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(30px, -50px) scale(1.1); }
+          66% { transform: translate(-20px, 20px) scale(0.9); }
+          100% { transform: translate(0px, 0px) scale(1); }
+        }
         
-        {/* <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-        >
-          <Box sx={{ mt: 8 }}>
-            <Grid container spacing={3}>
-              {stats.map((stat, index) => (
-                <Grid item xs={12} sm={6} md={3} key={index}>
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <Card
-                      sx={{
-                        textAlign: 'center',
-                        p: 3,
-                        height: '100%',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          borderColor: 'primary.main',
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0 20px 40px rgba(0, 212, 255, 0.1)',
-                        }
-                      }}
-                    >
-                      <CardContent>
-                        <Box sx={{ color: 'primary.main', fontSize: '2rem', mb: 2 }}>
-                          {stat.icon}
-                        </Box>
-                        <Typography variant="h3" color="primary" sx={{ mb: 1, fontWeight: 700 }}>
-                          {stat.value}
-                        </Typography>
-                        <Typography variant="body1" color="text.secondary">
-                          {stat.label}
-                        </Typography>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </motion.div> */}
-      </Container>
-    </Box>
+        @keyframes fadeIn {
+          0% { opacity: 0; transform: translateY(10px); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+        
+        .animation-delay-1000 {
+          animation-delay: 1s;
+        }
+        
+        .animate-fadeIn {
+          animation: fadeIn 0.5s ease-in-out;
+        }
+      `}</style>
+    </div>
   );
 };
 
-export default About; 
+export default About;
