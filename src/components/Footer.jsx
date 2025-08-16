@@ -27,20 +27,21 @@ const Footer = () => {
       label: 'GitHub',
       url: 'https://github.com'
     },
-    {
-      icon: <EmailIcon />,
-      label: 'Email',
-      url: 'mailto:prathap0955@gmail.com'
-    },
-    {
-      icon: <PhoneIcon />,
-      label: 'Phone',
-      url: 'tel:+916374550093'
-    }
+    // {
+    //   icon: <EmailIcon />,
+    //   label: 'Email',
+    //   url: 'mailto:prathap0955@gmail.com'
+    // },
+    // {
+    //   icon: <PhoneIcon />,
+    //   label: 'Phone',
+    //   url: 'tel:+916374550093'
+    // }
   ];
 
   return (
     <Box
+      id='contact'
       component="footer"
       sx={{
         backgroundColor: 'background.default',
@@ -64,6 +65,19 @@ const Footer = () => {
               <Typography variant="body2" color="text.secondary">
                 Full Stack Developer specializing in React, Node.js, and modern web technologies.
               </Typography>
+
+
+              <Box sx={{display:'flex',flexDirection:'column'}}>
+               <Typography component='a' href='tel:+916374550093' variant="body2" color="text.secondary">
+                <PhoneIcon sx={{fontSize:15,mr:2}}/>{''} 6374550093
+              </Typography>
+
+               <Typography component='a' href='mailto:prathap0955@gmail.com' variant="body2" 
+               color="text.secondary">
+                <EmailIcon sx={{fontSize:15, mr:2}}/> {' '}prathap0955@gmail.com
+              </Typography>
+              </Box>
+              
             </motion.div>
           </Grid>
           

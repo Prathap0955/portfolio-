@@ -88,7 +88,7 @@ const About = () => {
               </p>
             </div>
             
-            <div className={`pt-4 transform transition-all duration-700 delay-1100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
+            {/* <div className={`pt-4 transform transition-all duration-700 delay-1100 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}>
               <button
                 onClick={downloadResume}
                 className="group bg-gradient-to-r from-blue-600 to-cyan-600 text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-cyan-500/25 hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3 border border-cyan-500/20"
@@ -98,7 +98,7 @@ const About = () => {
                 </svg>
                 Download Resume
               </button>
-            </div>
+            </div> */}
           </div>
           
           {/* Profile Image */}
@@ -119,7 +119,7 @@ const About = () => {
         </div>
 
         {/* Stats Section */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        {/* <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {stats.map((stat, index) => (
             <div
               key={index}
@@ -134,7 +134,7 @@ const About = () => {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
       </div>
 
       <style jsx>{`

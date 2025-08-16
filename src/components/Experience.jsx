@@ -23,39 +23,11 @@ import {
   Work as WorkIcon,
   School as SchoolIcon,
   Star as StarIcon,
-  //   Award as AwardIcon
+  EmojiEvents as AwardIcon
 } from '@mui/icons-material';
 
 const Experience = () => {
   const experiences = [
-    // {
-    //   id: 1,
-    //   type: 'work',
-    //   title: 'Senior Full Stack Developer',
-    //   company: 'TechCorp Solutions',
-    //   period: '2022 - Present',
-    //   location: 'Chennai, India',
-    //   description: 'Leading development of enterprise-level web applications using React, Node.js, and MongoDB. Mentoring junior developers and implementing best practices for code quality and performance.',
-    //   achievements: [
-    //     'Reduced application load time by 40% through optimization',
-    //     'Implemented CI/CD pipeline reducing deployment time by 60%',
-    //     'Led team of 5 developers on major client projects'
-    //   ]
-    // },
-    // {
-    //   id: 2,
-    //   type: 'work',
-    //   title: 'Full Stack Developer',
-    //   company: 'Digital Innovations Inc.',
-    //   period: '2020 - 2022',
-    //   location: 'Chennai, India',
-    //   description: 'Developed and maintained multiple client projects using the MERN stack. Collaborated with design and product teams to deliver high-quality user experiences.',
-    //   achievements: [
-    //     'Built 15+ client applications with 100% client satisfaction',
-    //     'Introduced automated testing increasing code coverage to 85%',
-    //     'Optimized database queries improving performance by 50%'
-    //   ]
-    // },
     {
       id: 1,
       type: 'work',
@@ -80,12 +52,10 @@ const Experience = () => {
       description: 'Pursued a master degree combining commerce and computer applications, with a strong foundation in web technologies, algorithms, and software development principles. After graduation, completed a MERN stack developer training program at UPTOR, gaining hands-on experience in full-stack web development.',
       achievements: [
         'Graduated with First Class Honours',
-        'Completed final-year project on full-stack web application development',
         'Completed MERN stack developer certification at UPTOR',
         'Active participant in coding clubs and regional hackathons'
       ]
     }
-
   ];
 
   const certifications = [
@@ -116,6 +86,18 @@ const Experience = () => {
     }
   };
 
+  const floatingVariants = {
+    animate: {
+      y: [0, -20, 0],
+      rotate: [0, 5, -5, 0],
+      transition: {
+        duration: 6,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
+
   return (
     <Box
       id="experience"
@@ -124,10 +106,111 @@ const Experience = () => {
         backgroundColor: 'background.default',
         minHeight: '100vh',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        position: 'relative',
+        overflow: 'hidden',
+        background: `
+          radial-gradient(circle at 20% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%),
+          radial-gradient(circle at 40% 40%, rgba(138, 43, 226, 0.05) 0%, transparent 50%),
+          linear-gradient(135deg, rgba(0, 212, 255, 0.02) 0%, transparent 50%, rgba(255, 107, 107, 0.02) 100%)
+        `,
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: `
+            radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), 
+              rgba(0, 212, 255, 0.06), 
+              transparent 40%
+            )
+          `,
+          opacity: 0.7,
+          transition: 'opacity 0.3s ease',
+          pointerEvents: 'none',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          top: '-50%',
+          left: '-50%',
+          width: '200%',
+          height: '200%',
+          background: `
+            conic-gradient(from 0deg at 50% 50%, 
+              transparent 0deg, 
+              rgba(0, 212, 255, 0.03) 60deg, 
+              transparent 120deg, 
+              rgba(255, 107, 107, 0.03) 180deg, 
+              transparent 240deg, 
+              rgba(138, 43, 226, 0.03) 300deg, 
+              transparent 360deg
+            )
+          `,
+          animation: 'rotate 20s linear infinite',
+          pointerEvents: 'none',
+        },
+        '@keyframes rotate': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' }
+        }
       }}
     >
-      <Container maxWidth="lg">
+      {/* Floating Background Elements */}
+      <Box sx={{ position: 'absolute', top: '10%', left: '5%', opacity: 0.1, zIndex: 0 }}>
+        <motion.div variants={floatingVariants} animate="animate">
+          <Box
+            sx={{
+              width: 100,
+              height: 100,
+              borderRadius: '50%',
+              background: 'linear-gradient(45deg, #00d4ff, #0099cc)',
+              filter: 'blur(20px)',
+            }}
+          />
+        </motion.div>
+      </Box>
+
+      <Box sx={{ position: 'absolute', bottom: '20%', right: '10%', opacity: 0.1, zIndex: 0 }}>
+        <motion.div 
+          variants={floatingVariants} 
+          animate="animate"
+          transition={{ delay: 2 }}
+        >
+          <Box
+            sx={{
+              width: 80,
+              height: 80,
+              borderRadius: '50%',
+              background: 'linear-gradient(45deg, #ff6b6b, #ff8e8e)',
+              filter: 'blur(15px)',
+            }}
+          />
+        </motion.div>
+      </Box>
+
+      <Box sx={{ position: 'absolute', top: '60%', left: '80%', opacity: 0.1, zIndex: 0 }}>
+        <motion.div 
+          variants={floatingVariants} 
+          animate="animate"
+          transition={{ delay: 4 }}
+        >
+          <Box
+            sx={{
+              width: 60,
+              height: 60,
+              borderRadius: '50%',
+              background: 'linear-gradient(45deg, #8a2be2, #9370db)',
+              filter: 'blur(25px)',
+            }}
+          />
+        </motion.div>
+      </Box>
+
+      <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -140,6 +223,24 @@ const Experience = () => {
             sx={{
               mb: 6,
               position: 'relative',
+              background: 'linear-gradient(45deg, #00d4ff, #0099cc)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              backgroundClip: 'text',
+              fontWeight: 700,
+              textShadow: '0 0 30px rgba(0, 212, 255, 0.3)',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '120%',
+                height: '120%',
+                background: 'radial-gradient(circle, rgba(0, 212, 255, 0.05) 0%, transparent 70%)',
+                borderRadius: '50%',
+                zIndex: -1,
+              },
               '&::after': {
                 content: '""',
                 position: 'absolute',
@@ -150,6 +251,7 @@ const Experience = () => {
                 height: 4,
                 background: 'linear-gradient(45deg, #00d4ff, #0099cc)',
                 borderRadius: 2,
+                boxShadow: '0 0 20px rgba(0, 212, 255, 0.5)',
               }
             }}
           >
@@ -183,7 +285,8 @@ const Experience = () => {
                           sx={{
                             bgcolor: exp.type === 'work' ? 'primary.main' : 'secondary.main',
                             width: 20,
-                            height: 20
+                            height: 20,
+                            boxShadow: `0 0 20px ${exp.type === 'work' ? 'rgba(0, 212, 255, 0.6)' : 'rgba(255, 107, 107, 0.6)'}`,
                           }}
                         >
                           {exp.type === 'work' ? <WorkIcon /> : <SchoolIcon />}
@@ -195,10 +298,14 @@ const Experience = () => {
                         <Card
                           sx={{
                             transition: 'all 0.3s ease',
+                            background: 'rgba(255, 255, 255, 0.05)',
+                            backdropFilter: 'blur(10px)',
+                            border: '1px solid rgba(255, 255, 255, 0.1)',
                             '&:hover': {
                               borderColor: 'primary.main',
                               transform: 'translateY(-5px)',
-                              boxShadow: '0 10px 25px rgba(0, 212, 255, 0.1)',
+                              boxShadow: '0 20px 40px rgba(0, 212, 255, 0.2)',
+                              background: 'rgba(0, 212, 255, 0.05)',
                             }
                           }}
                         >
@@ -209,7 +316,8 @@ const Experience = () => {
                                   bgcolor: exp.type === 'work' ? 'primary.main' : 'secondary.main',
                                   mr: 2,
                                   width: 40,
-                                  height: 40
+                                  height: 40,
+                                  boxShadow: `0 0 20px ${exp.type === 'work' ? 'rgba(0, 212, 255, 0.4)' : 'rgba(255, 107, 107, 0.4)'}`,
                                 }}
                               >
                                 {exp.type === 'work' ? <WorkIcon /> : <SchoolIcon />}
@@ -265,7 +373,18 @@ const Experience = () => {
               viewport={{ once: true }}
             >
               <Box sx={{ position: 'sticky', top: 100 }}>
-                <Typography variant="h4" color="primary" sx={{ mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
+                <Typography 
+                  variant="h4" 
+                  color="primary" 
+                  sx={{ 
+                    mb: 3, 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    gap: 1,
+                    textShadow: '0 0 20px rgba(0, 212, 255, 0.3)',
+                  }}
+                >
+                  <AwardIcon />
                   Certifications
                 </Typography>
 
@@ -273,31 +392,122 @@ const Experience = () => {
                   {certifications.map((cert, index) => (
                     <Grid item xs={12} key={index}>
                       <motion.div
-                        whileHover={{ scale: 1.02 }}
+                        whileHover={{ 
+                          scale: 1.05,
+                          rotate: [0, 1, -1, 0]
+                        }}
                         transition={{ duration: 0.3 }}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        delay={index * 0.1}
                       >
                         <Card
                           sx={{
-                            transition: 'all 0.3s ease',
+                            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                            background: `
+                              linear-gradient(135deg, 
+                                rgba(0, 212, 255, 0.1) 0%, 
+                                rgba(255, 107, 107, 0.1) 50%, 
+                                rgba(138, 43, 226, 0.1) 100%
+                              )
+                            `,
+                            backdropFilter: 'blur(20px)',
+                            border: '1px solid rgba(255, 255, 255, 0.2)',
+                            borderRadius: 3,
+                            position: 'relative',
+                            overflow: 'hidden',
+                            '&::before': {
+                              content: '""',
+                              position: 'absolute',
+                              top: 0,
+                              left: '-100%',
+                              width: '100%',
+                              height: '100%',
+                              background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent)',
+                              transition: 'left 0.6s ease',
+                            },
                             '&:hover': {
                               borderColor: 'primary.main',
-                              transform: 'translateY(-3px)',
-                              boxShadow: '0 8px 20px rgba(0, 212, 255, 0.1)',
+                              transform: 'translateY(-8px) scale(1.02)',
+                              boxShadow: `
+                                0 20px 40px rgba(0, 212, 255, 0.3),
+                                0 0 60px rgba(0, 212, 255, 0.2),
+                                inset 0 0 20px rgba(255, 255, 255, 0.1)
+                              `,
+                              background: `
+                                linear-gradient(135deg, 
+                                  rgba(0, 212, 255, 0.2) 0%, 
+                                  rgba(255, 107, 107, 0.15) 50%, 
+                                  rgba(138, 43, 226, 0.2) 100%
+                                )
+                              `,
+                              '&::before': {
+                                left: '100%',
+                              }
                             }
                           }}
                         >
-                          <CardContent sx={{ textAlign: 'center', py: 3 }}>
-                            <Typography variant="h6" color="primary" sx={{ mb: 1, fontWeight: 600 }}>
+                          <CardContent 
+                            sx={{ 
+                              textAlign: 'center', 
+                              py: 4,
+                              position: 'relative',
+                              zIndex: 1,
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                position: 'absolute',
+                                top: 10,
+                                right: 10,
+                                width: 8,
+                                height: 8,
+                                borderRadius: '50%',
+                                background: 'linear-gradient(45deg, #00d4ff, #ff6b6b)',
+                                boxShadow: '0 0 10px rgba(0, 212, 255, 0.6)',
+                                animation: 'pulse 2s infinite',
+                                '@keyframes pulse': {
+                                  '0%, 100%': { opacity: 1, transform: 'scale(1)' },
+                                  '50%': { opacity: 0.7, transform: 'scale(1.2)' }
+                                }
+                              }}
+                            />
+                            <Typography 
+                              variant="h6" 
+                              color="primary" 
+                              sx={{ 
+                                mb: 1, 
+                                fontWeight: 600,
+                                textShadow: '0 0 10px rgba(0, 212, 255, 0.3)',
+                              }}
+                            >
                               {cert.name}
                             </Typography>
-                            <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
+                            <Typography 
+                              variant="body2" 
+                              color="text.secondary" 
+                              sx={{ 
+                                mb: 2,
+                                fontWeight: 500,
+                              }}
+                            >
                               {cert.issuer}
                             </Typography>
                             <Chip
                               label={cert.year}
                               size="small"
-                              color="primary"
-                              variant="outlined"
+                              sx={{
+                                background: 'linear-gradient(45deg, #00d4ff, #0099cc)',
+                                color: 'white',
+                                fontWeight: 600,
+                                boxShadow: '0 0 15px rgba(0, 212, 255, 0.4)',
+                                border: '1px solid rgba(255, 255, 255, 0.2)',
+                                '&:hover': {
+                                  background: 'linear-gradient(45deg, #0099cc, #00d4ff)',
+                                  transform: 'scale(1.05)',
+                                }
+                              }}
                             />
                           </CardContent>
                         </Card>
@@ -314,4 +524,4 @@ const Experience = () => {
   );
 };
 
-export default Experience; 
+export default Experience;

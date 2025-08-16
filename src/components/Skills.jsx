@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Code, Server, Database, Settings, X, Target } from 'lucide-react';
 
 const Skills = () => {
-  const [selectedCategory, setSelectedCategory] = useState(0);
-  const [hoveredSkill, setHoveredSkill] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
@@ -12,280 +12,258 @@ const Skills = () => {
   const skillCategories = [
     {
       title: "Frontend",
-      icon: "🎨",
-      color: "cyan",
-      skills: [
-        "React.js",
-        "JavaScript (ES6+)",
-        "TypeScript",
-        "HTML5 & CSS3",
-        "Tailwind CSS",
-        "Redux Toolkit",
-        "React Router",
-        "Responsive Design",
-        "Context API"
-      ]
+      icon: Code,
+      angle: 270,
+      skills: ["React.js", "JavaScript (ES6+)", "TypeScript", "HTML5 & CSS3", "Tailwind CSS", "Redux Toolkit"]
     },
     {
       title: "Backend",
-      icon: "⚡",
-      color: "emerald",
-      skills: [
-        "Node.js",
-        "Express.js",
-        "RESTful APIs",
-        "GraphQL",
-        "JWT Authentication",
-        "OAuth Integration",
-        "API Design",
-        "Middleware Development",
-        "Error Handling"
-      ]
+      icon: Server,
+      angle: 180,
+      skills: ["Node.js", "Express.js", "RESTful APIs", "GraphQL", "JWT Authentication"]
     },
     {
       title: "Database",
-      icon: "🗃️",
-      color: "violet",
-      skills: [
-        "MongoDB",
-        "PostgreSQL",
-        "Redis",
-        "Mongoose ODM",
-        "Sequelize ORM",
-        "Database Design",
-        "Query Optimization",
-        "Data Modeling",
-        "Migration Scripts"
-      ]
+      icon: Database,
+      angle: 90,
+      skills: ["MongoDB", "PostgreSQL", "Redis", "Mongoose ODM", "Sequelize ORM"]
     },
     {
       title: "DevOps & Tools",
-      icon: "🔧",
-      color: "orange",
-      skills: [
-        "Git & GitHub",
-        "Docker",
-        "AWS Services",
-        "CI/CD Pipelines",
-        "Linux/Unix",
-        "Shell Scripting",
-        "Webpack",
-        "Jest Testing",
-        "ESLint & Prettier"
-      ]
+      icon: Settings,
+      angle: 0,
+      skills: ["Git & GitHub", "Docker", "AWS Services", "CI/CD Pipelines", "Linux/Unix"]
     }
   ];
 
-  const techStack = [
-    { name: "React", icon: "⚛️", category: "Frontend" },
-    { name: "Node.js", icon: "🟢", category: "Backend" },
-    { name: "MongoDB", icon: "🍃", category: "Database" },
-    { name: "TypeScript", icon: "🔷", category: "Language" },
-    { name: "Docker", icon: "🐳", category: "DevOps" },
-    { name: "AWS", icon: "☁️", category: "Cloud" },
-    { name: "Git", icon: "📚", category: "Version Control" },
-    { name: "GraphQL", icon: "🔗", category: "API" }
-  ];
+  const handleCategoryClick = (categoryIndex) => {
+    setSelectedCategory(categoryIndex);
+  };
+
+  const closePopup = () => {
+    setSelectedCategory(null);
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white py-20 px-4 overflow-hidden relative">
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-20 left-20 w-2 h-2 bg-cyan-400 rounded-full animate-ping" />
-        <div className="absolute top-1/3 right-32 w-1 h-1 bg-purple-400 rounded-full animate-pulse" />
-        <div className="absolute bottom-1/3 left-16 w-3 h-3 bg-green-400 rounded-full animate-bounce" />
-        <div className="absolute top-2/3 right-20 w-2 h-2 bg-pink-400 rounded-full animate-ping" style={{ animationDelay: '1s' }} />
+    <div id='skills' className="min-h-screen bg-black text-white flex flex-col items-center justify-center py-20 relative overflow-hidden">
+      {/* Animated Background Effects */}
+      <div className="absolute inset-0 overflow-hidden">
+        {/* Floating Orbs */}
+        <div className="absolute top-20 left-20 w-64 h-64 bg-cyan-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-48 h-48 bg-blue-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute bottom-20 left-40 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-2000"></div>
+        <div className="absolute bottom-40 right-40 w-56 h-56 bg-teal-500/10 rounded-full blur-3xl animate-pulse delay-3000"></div>
         
         {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="h-full w-full" style={{
-            backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)',
-            backgroundSize: '100px 100px'
-          }} />
-        </div>
+        <div 
+          className="absolute inset-0 opacity-5"
+          style={{
+            backgroundImage: `
+              linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px)
+            `,
+            backgroundSize: '50px 50px',
+            animation: 'float 20s ease-in-out infinite'
+          }}
+        ></div>
+        
+        {/* Rotating Gradient */}
+        <div 
+          className="absolute inset-0 opacity-20"
+          style={{
+            background: `conic-gradient(from 0deg at 50% 50%, transparent 0deg, rgba(0, 212, 255, 0.1) 60deg, transparent 120deg, rgba(59, 130, 246, 0.1) 180deg, transparent 240deg, rgba(139, 92, 246, 0.1) 300deg, transparent 360deg)`,
+            animation: 'spin 30s linear infinite'
+          }}
+        ></div>
+        
+        {/* Animated Particles */}
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-1 h-1 bg-cyan-400/30 rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`
+            }}
+          ></div>
+        ))}
+        
+        {/* Scanline Effect */}
+        <div 
+          className="absolute inset-x-0 h-px bg-gradient-to-r from-transparent via-cyan-400/30 to-transparent"
+          style={{
+            animation: 'scanline 4s ease-in-out infinite',
+            top: '0%'
+          }}
+        ></div>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
-        <div className={`text-center mb-20 transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`}>
-          <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight">
-            <span className="bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
-              EXPERTISE
-            </span>
-          </h1>
-          <p className="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-            Building modern web applications with cutting-edge technologies and best practices
-          </p>
+      {/* Custom CSS Animations */}
+      <style jsx>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) translateX(0px); }
+          25% { transform: translateY(-10px) translateX(5px); }
+          50% { transform: translateY(0px) translateX(-5px); }
+          75% { transform: translateY(10px) translateX(5px); }
+        }
+        
+        @keyframes scanline {
+          0% { top: 0%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { top: 100%; opacity: 0; }
+        }
+      `}</style>
+
+      {/* Header */}
+      <div className={`text-center mb-16 transition-all duration-1000 relative z-10 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
+        <h1 className="text-6xl md:text-8xl font-black mb-6 tracking-tight bg-gradient-to-r from-white via-gray-300 to-gray-400 bg-clip-text text-transparent">
+          MY SKILLS
+        </h1>
+        <p className="text-lg text-gray-400 max-w-2xl mx-auto">Click on any skill category to explore my expertise</p>
+      </div>
+
+      {/* Circle Layout */}
+      <div className={`relative w-96 h-96 md:w-[500px] md:h-[500px] transition-all duration-1000 z-10 ${isVisible ? 'scale-100 opacity-100' : 'scale-0 opacity-0'}`}>
+        
+        {/* Central Hub */}
+        <div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 md:w-40 md:h-40 rounded-full flex flex-col items-center justify-center cursor-pointer z-20"
+          style={{
+            background: `rgba(0, 212, 255, 0.1)`,
+            border: `1px solid rgba(0, 212, 255, 0.3)`,
+            backdropFilter: 'blur(10px)'
+          }}
+        >
+          <Target className="w-12 h-12 text-cyan-400" />
+          <div className="text-xs text-gray-400">SKILLS HUB</div>
         </div>
 
-        {/* Category Navigation */}
-        <div className={`flex justify-center mb-16 transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
-        }`} style={{ transitionDelay: '0.2s' }}>
-          <div className="bg-white/5 backdrop-blur-xl rounded-2xl p-2 border border-white/10">
-            {skillCategories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setSelectedCategory(index)}
-                className={`px-8 py-4 rounded-xl font-semibold transition-all duration-300 mx-1 text-lg ${
-                  selectedCategory === index
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg transform scale-105 shadow-purple-500/25'
-                    : 'text-gray-400 hover:text-white hover:bg-white/10'
-                }`}
+        {/* Fixed Position Categories */}
+        {skillCategories.map((category, index) => {
+          const radius = 180;
+          const angle = category.angle * (Math.PI / 180);
+          const x = Math.cos(angle) * radius;
+          const y = Math.sin(angle) * radius;
+          const IconComponent = category.icon;
+
+          return (
+            <div
+              key={index}
+              className="absolute transform -translate-x-1/2 -translate-y-1/2 cursor-pointer"
+              style={{
+                left: `calc(50% + ${x}px)`,
+                top: `calc(50% + ${y}px)`
+              }}
+              onClick={() => handleCategoryClick(index)}
+            >
+              {/* Category Circle */}
+              <div
+                className="w-24 h-24 md:w-28 md:h-28 rounded-full flex items-center justify-center relative overflow-hidden transition-all duration-300 hover:scale-110"
+                style={{
+                  background: `rgba(0, 212, 255, 0.1)`,
+                  border: `1px solid rgba(0, 212, 255, 0.3)`,
+                  backdropFilter: 'blur(10px)'
+                }}
               >
-                <span className="mr-3 text-xl">{category.icon}</span>
+                <IconComponent className="w-8 h-8 text-cyan-400" />
+              </div>
+              {/* Label */}
+              <div className="absolute -bottom-8 left-1/2 transform -translate-x-1/2 text-xs font-semibold text-gray-300">
                 {category.title}
-              </button>
-            ))}
-          </div>
-        </div>
-
-        {/* Skills Display */}
-        <div className="grid lg:grid-cols-3 gap-12 mb-20">
-          {/* Skills List */}
-          <div className={`lg:col-span-2 transform transition-all duration-1000 ${
-            isVisible ? 'translate-x-0 opacity-100' : '-translate-x-20 opacity-0'
-          }`} style={{ transitionDelay: '0.4s' }}>
-            <div className="mb-8">
-              <h3 className="text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-                {skillCategories[selectedCategory].title} Technologies
-              </h3>
-              <div className="w-24 h-1 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full" />
+              </div>
+              {/* Connection Line */}
+              <div
+                className="absolute top-1/2 left-1/2 origin-left h-0.5 bg-cyan-400/30"
+                style={{
+                  width: `${radius - 50}px`,
+                  transform: `translateY(-50%) rotate(${category.angle}deg)`
+                }}
+              />
             </div>
-            
-            <div className="grid md:grid-cols-2 gap-4">
-              {skillCategories[selectedCategory].skills.map((skill, index) => (
+          );
+        })}
+      </div>
+
+      {/* Skills Popup */}
+      {selectedCategory !== null && (
+        <div
+          className="fixed inset-0 bg-black/70 backdrop-blur-sm z-40 flex items-center justify-center p-4"
+          onClick={closePopup}
+        >
+          <div
+            className="bg-gray-900/95 backdrop-blur-xl rounded-3xl border border-gray-700/50 shadow-2xl max-w-2xl w-full max-h-[80vh] overflow-auto relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Popup Background Effects */}
+            <div className="absolute inset-0 overflow-hidden rounded-3xl">
+              {/* Grid Pattern */}
+              <div 
+                className="absolute inset-0 opacity-5"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(rgba(0, 212, 255, 0.1) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0, 212, 255, 0.1) 1px, transparent 1px)
+                  `,
+                  backgroundSize: '25px 25px'
+                }}
+              ></div>
+              
+              {/* Animated Particles */}
+              {[...Array(12)].map((_, i) => (
                 <div
-                  key={skill}
-                  className={`group p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/20 cursor-pointer ${
-                    hoveredSkill === `${selectedCategory}-${index}` ? 'scale-105' : ''
-                  }`}
-                  onMouseEnter={() => setHoveredSkill(`${selectedCategory}-${index}`)}
-                  onMouseLeave={() => setHoveredSkill(null)}
-                  style={{ 
-                    transitionDelay: `${index * 0.05}s`,
-                    animation: `fadeInUp 0.6s ease-out ${index * 0.1}s both`
+                  key={i}
+                  className="absolute w-0.5 h-0.5 bg-cyan-400/30 rounded-full"
+                  style={{
+                    left: `${Math.random() * 100}%`,
+                    top: `${Math.random() * 100}%`,
+                    animation: `float ${3 + Math.random() * 4}s ease-in-out infinite`,
+                    animationDelay: `${Math.random() * 5}s`
+                  }}
+                ></div>
+              ))}
+              
+              {/* Subtle Border Lines */}
+              <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent"></div>
+              <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-cyan-400/20 to-transparent"></div>
+              <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent"></div>
+              <div className="absolute right-0 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent"></div>
+            </div>
+
+            {/* Popup Header */}
+            <div className="sticky top-0 bg-gray-900/95 border-b border-gray-700/50 p-6 rounded-t-3xl flex justify-between items-center relative z-10">
+              <h3 className="text-3xl font-bold text-white">{skillCategories[selectedCategory].title}</h3>
+              <button
+                onClick={closePopup}
+                className="w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-all duration-200"
+              >
+                <X className="w-5 h-5 text-gray-400 hover:text-white" />
+              </button>
+            </div>
+            {/* Skills List */}
+            <div className="p-6 grid md:grid-cols-2 gap-4 relative z-10">
+              {skillCategories[selectedCategory].skills.map((skill, skillIndex) => (
+                <div 
+                  key={skill} 
+                  className="p-4 rounded-xl bg-gray-800/30 border border-gray-700/30 hover:border-gray-600/50 hover:bg-gray-800/50 transition-all duration-200 relative overflow-hidden group"
+                  style={{
+                    animationDelay: `${skillIndex * 100}ms`
                   }}
                 >
-                  <div className="flex items-center space-x-3">
-                    <div className="w-3 h-3 bg-gradient-to-r from-cyan-400 to-purple-500 rounded-full group-hover:scale-150 transition-transform duration-300" />
-                    <span className="text-lg font-medium text-white group-hover:text-cyan-400 transition-colors duration-300">
-                      {skill}
-                    </span>
-                  </div>
+                  {/* Skill Card Background Effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="text-gray-200 relative z-10">{skill}</span>
+                  
+                  {/* Hover Glow */}
+                  <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-cyan-400/10 to-blue-400/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-sm"></div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Visual Element */}
-          <div className={`flex items-center justify-center transform transition-all duration-1000 ${
-            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-20 opacity-0'
-          }`} style={{ transitionDelay: '0.6s' }}>
-            <div className="relative">
-              {/* Central Icon */}
-              <div className="w-32 h-32 bg-gradient-to-br from-cyan-500 to-purple-600 rounded-3xl flex items-center justify-center text-6xl shadow-2xl shadow-purple-500/30 animate-pulse">
-                {skillCategories[selectedCategory].icon}
-              </div>
-              
-              {/* Floating Elements */}
-              <div className="absolute -top-4 -right-4 w-8 h-8 bg-cyan-400 rounded-full animate-bounce" />
-              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-purple-400 rounded-full animate-ping" />
-              <div className="absolute top-1/2 -left-8 w-4 h-4 bg-pink-400 rounded-full animate-pulse" />
-              
-              {/* Glow Effect */}
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/20 to-purple-600/20 rounded-3xl blur-xl scale-110" />
-            </div>
-          </div>
         </div>
-
-        {/* Tech Stack Showcase */}
-        <div className={`transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-        }`} style={{ transitionDelay: '0.8s' }}>
-          <div className="text-center mb-12">
-            <h3 className="text-4xl font-bold mb-4 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
-              Tech Arsenal
-            </h3>
-            <p className="text-gray-400 text-lg">Tools and technologies I work with daily</p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-6">
-            {techStack.map((tech, index) => (
-              <div
-                key={tech.name}
-                className="group relative"
-                style={{ 
-                  animation: `slideInUp 0.8s ease-out ${index * 0.1}s both`
-                }}
-              >
-                <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-cyan-400/50 transition-all duration-500 transform hover:-translate-y-4 hover:rotate-3 hover:shadow-2xl hover:shadow-cyan-500/20 text-center min-h-[120px] flex flex-col justify-center">
-                  <div className="text-4xl mb-3 group-hover:scale-125 group-hover:rotate-12 transition-transform duration-300">
-                    {tech.icon}
-                  </div>
-                  <h4 className="font-bold text-white mb-1 group-hover:text-cyan-400 transition-colors duration-300">
-                    {tech.name}
-                  </h4>
-                  <div className="text-xs text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    {tech.category}
-                  </div>
-                </div>
-                
-                {/* Glowing border effect */}
-                <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-cyan-400/0 via-purple-500/0 to-pink-500/0 group-hover:from-cyan-400/20 group-hover:via-purple-500/20 group-hover:to-pink-500/20 transition-all duration-500 -z-10 blur-xl" />
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bottom Stats */}
-        {/* <div className={`mt-20 text-center transform transition-all duration-1000 ${
-          isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
-        }`} style={{ transitionDelay: '1s' }}>
-          <div className="inline-flex items-center space-x-12 bg-white/5 backdrop-blur-xl rounded-3xl px-12 py-6 border border-white/10">
-            <div className="text-center">
-              <div className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">30+</div>
-              <div className="text-sm text-gray-400 mt-1">Technologies</div>
-            </div>
-            <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent" />
-            <div className="text-center">
-              <div className="text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">100+</div>
-              <div className="text-sm text-gray-400 mt-1">Projects Built</div>
-            </div>
-            <div className="w-px h-12 bg-gradient-to-b from-transparent via-gray-500 to-transparent" />
-            <div className="text-center">
-              <div className="text-3xl font-bold bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent">3+</div>
-              <div className="text-sm text-gray-400 mt-1">Years Experience</div>
-            </div>
-          </div>
-        </div> */}
-      </div>
-
-      <style jsx>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes slideInUp {
-          from {
-            opacity: 0;
-            transform: translateY(50px) scale(0.9);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0) scale(1);
-          }
-        }
-      `}</style>
+      )}
     </div>
   );
 };
